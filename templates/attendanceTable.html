@@ -1,0 +1,215 @@
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic meta tags for SEO and responsiveness -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <meta name="description" content="A brief description of your website, ideally 150-160 characters.">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Reset default browser styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Base body styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        /* Main container styles - centers content and adds shadow */
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header section styles - contains section name and back button */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Header title styles */
+        .header h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        /* Section info container styles - contains back button */
+        .section-info {
+            text-align: right;
+        }
+
+        /* Section info text styles */
+        .section-info p {
+            margin: 0;
+            font-weight: bold;
+            color: #666;
+        }
+
+        /* Back button link styles */
+        .back-button {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* Table wrapper for horizontal scrolling on mobile */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        /* Main heading styles */
+        .heading {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Table base styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        /* Table cell styles */
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        /* Table header styles */
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Zebra striping for table rows */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Table row hover effect */
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Button container styles */
+        .btn-form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Export button styles */
+        #submit-save {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        /* Export button hover effect */
+        #submit-save:hover {
+            background-color: #45a049;
+        }
+      
+        /* Mobile responsive styles */
+        @media (max-width: 600px) {
+            /* Smaller text and padding for table cells on mobile */
+            th, td {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            /* Smaller heading on mobile */
+            .heading {
+                font-size: 20px;
+            }
+
+            /* Smaller button on mobile */
+            #submit-save {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main container for all content -->
+    <div class="container">
+        <!-- Header section with section name and back button -->
+        <div class="header">
+            <h2>Section: {{ section.section_name }}</h2>
+            <!-- Navigation container -->
+            <div class="section-info">
+                <a href="{% url 'teacher_dashboard' %}" class="back-button">← Back to Dashboard</a>
+            </div>
+        </div>
+        <!-- Table container for attendance data -->
+        <div class="table-container">
+            <h1 class="heading">Attendance List</h1>
+            <p>Capacity: {{ section.student_capacity }}</p>
+            <!-- Attendance data table -->
+            <table class="table" id="student-table">
+                <thead>
+                    <tr>
+                        <th>Fullname</th>
+                        <th>Student ID</th>
+                        <th>Email</th>
+                        <th>SubmittedTime</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <!-- Loop through students and display their data -->
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.student_input_id }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.created_at|date:"h:i A" }}</td>
+                    </tr>
+                    {% endfor %}
+                    <!-- Add empty rows to fill remaining capacity -->
+                    {% for i in blank_rows|range_filter %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- Export button container -->
+            <div class="btn-form">
+                <button id="submit-save" class="btn" onclick="window.location.href='{% url 'export_attendance_to_excel' section.id %}'" class="btn">Export to Excel</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

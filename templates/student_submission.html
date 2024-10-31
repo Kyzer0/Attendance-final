@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'App/css/student_submission.css' %}">
+{% endblock %}
+{% block content %}
+<!-- Main container to hold all elements and provide overall layout -->
+<div class="container">
+    <!-- Wrapper div for header and form content -->
+    <div class="wrap-up">   
+        <!-- Header section containing logo and authentication -->
+        <div class="header">
+            <!-- Container for ICCT logo image -->
+            <div class="logo">
+                <!-- Logo Image -->
+                <img src="{% static 'App/img/icct logop.png' %}" alt="ICCT Logo">
+            </div>
+            <!-- Container for authentication/login link -->
+            <div class="authentication">
+                <!-- Link to login page -->
+                <a href="{% url 'teacher_login' %}">
+                    <img src="{% static 'App/img/login-icon.png' %}" alt="Login Icon">
+                </a>
+            </div>
+        </div>
+
+      
+    <!-- Main Form Container for Student Information -->
+    <form method="POST" id="student-form" class="form-container">
+        {% csrf_token %}
+        
+        <!-- Input container for student's full name -->
+        <div class="input-tab">
+            <label for="name">Full Name</label>
+            <input id="name" type="text" name="name" placeholder="Enter your full name" required>
+            <div id="name-error" class="error-tab"></div>
+        </div>
+        
+        <!-- Input container for student ID -->
+        <div class="input-tab">
+            <label for="student-id">Student ID</label>
+            <input id="student-id" type="text" name="student_input_id" placeholder="Enter your student ID" required>
+            <div id="studentid-error" class="error-tab"></div>
+        </div>
+        
+        <!-- Dropdown container for teacher selection -->
+        <div class="input-tab">
+            <label for="teacher-select">Select Teacher</label>
+            <select name="teacher" id="teacher-select" required>
+                <option value="">Choose a Teacher</option>
+                {% for teacher in teachers %}
+                    <option value="{{ teacher.id }}">{{ teacher.first_name }} {{ teacher.last_name }}</option>
+                {% endfor %}
+            </select>
+            <div class="error-tab"></div>
+        </div>
+        
+        <!-- Dropdown container for section selection -->
+        <div class="input-tab">
+            <label for="section-select">Select Section</label>
+            <select name="section" id="section-select" required>
+                <option value="">First select a teacher</option>
+            </select>
+            <div id="section-error" class="error-tab"></div>
+        </div>
+        
+        <!-- Input container for student email -->
+        <div class="input-tab">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <div id="email-error" class="error-tab"></div>
+        </div>
+        
+        <!-- Container for submit button and error messages -->
+        <div class="btn-form">
+            <button type="submit" id="submit-btn">Submit</button>
+            <div id="submit-error" class="error-tab"></div>
+        </div>
+    </form>
+    
+        <!-- Modal container for displaying attendance closure notices -->
+        <div id="error-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Notice</h2>
+                <h1>Teacher Attendance is Closed!</h1>
+                <p id="modal-message"></p>
+                <button id="modal-ok-btn">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

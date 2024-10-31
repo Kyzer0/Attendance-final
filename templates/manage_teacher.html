@@ -1,0 +1,11 @@
+{% for teacher in teachers %}
+    <!-- Container for each teacher's information and action buttons -->
+    <div>
+        <!-- Display teacher's email address -->
+        {{ teacher.email }}
+        <!-- Edit button linking to teacher edit page -->
+        <a href="{% url 'edit_teacher' teacher.id %}">Edit</a>
+        <!-- Delete button linking to teacher delete functionality -->
+        <a href="{% url 'delete_teacher' teacher.id %}">Delete</a>
+    </div>
+{% endfor %}

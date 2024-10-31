@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic meta tags for character encoding and viewport settings -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Store teacher ID for JavaScript access -->
+    <meta name="teacher-id" content="{{ request.user.id }}">
+    
+    <!-- SEO meta tags -->
+    <title>Student Attendance System</title>
+    <meta name="description" content="A brief description of your website, ideally 150-160 characters.">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    
+    <!-- Favicon and base stylesheet -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Duplicate meta tags - should be removed -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Dynamic page title block -->
+    <title>{% block title %}My Django Project{% endblock %}</title>
+
+    {% load static %}
+    <!-- CSS block for template-specific styling -->
+    {% block css %}
+    <!-- Base CSS files for different pages/components -->
+    <link rel="stylesheet" type="text/css" href="{% static 'App/CSS/teacher_login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'App/CSS/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'App/CSS/student_submission.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'App/CSS/create_section.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'App/CSS/submission_success.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'App/CSS/teacher_profile.css' %}">
+    {% endblock %}
+    
+</head>
+<body>
+
+    <!-- Main content block for child templates -->
+    {% block content %}{% endblock %}  
+  
+    <!-- JavaScript block for scripts -->
+    {% block javascript %}
+    <!-- Base JavaScript files for different pages/functionality -->
+    <script src="{% static 'App/JS/teacher_login.js' %}"></script>
+    <script src="{% static 'App/JS/student_submission.js' %}"></script>
+    <script src="{% static 'App/JS/create_section.js' %}"></script>
+    <script src="{% static 'App/JS/submission_success.js' %}"></script>
+    <script src="{% static 'App/JS/teacher_profile.js' %}"></script>
+    <script src="{% static 'App/JS/attendanceTable.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+{% block title %}Teacher Dashboard{% endblock %}
+
+{% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'App/CSS/teacher_dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Main container for the entire dashboard -->
+<div class="container">
+    <!-- Sidebar navigation menu -->
+    <div id="side-bar" class="side-bar">
+        <!-- ICCT Logo container -->
+        <div class="logo">
+            <img src="{% static '/App/img/icct logop.png' %}">
+        </div>
+        <!-- Back button/arrow icon container -->
+        <div id="back-icon" class="back-icon">
+           
+            <i id="arrow"  class='bx bx-left-arrow-alt'></i>
+            <img style="height: 70px; width: 70px;" id="arrow-img" src="{% static 'App/img/arrow.png' %}">
+        </div>
+
+        <!-- Navigation links list -->
+        <ul class="links">
+            <li>
+                <a id="dashboard" href="javascript:void(0)">
+                    <img src="{% static 'App/img/dash-board.png' %}">
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li>
+                <a id="teacher-profile" href="/teacher/profile/">  <!-- Use the direct URL path -->
+                    <img src="{% static 'App/img/teacher-profile.png' %}" alt="Profile">
+                    <p>Teacher Profile</p>
+                </a>
+            </li>
+            <li>
+                <a id="set-timeline" href="javascript:void(0)">
+                    <img src="{% static 'App/img/due-date.png' %}">
+                    <p>Set Timeline</p>
+                </a>
+            </li>
+            <li>
+                <a id="create-section" href="javascript:void(0)">
+                    <img src="{% static 'App/img/create_section.png' %}">
+                    <p>Create Section</p>
+                </a>
+            </li>
+            <li>
+                <a id="manage-section" href="javascript:void(0)">  <!-- Fixed -->
+                    <img src="{% static 'App/img/current-section.png' %}">
+                    <p>Manage Section</p>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Logout form container -->
+        <div class="logout">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">
+                    <img src="{% static 'App/img/log-out.png' %}" alt="Log out">
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main content boards container -->
+    <div class="boards">
+        <!-- Dashboard welcome message -->
+        <div id="board-dashboard" class="board-dashboard">
+            <div class="table-container">
+                <h1 class="heading">Welcome to Attendance Page</h1>
+            </div>
+        </div>
+
+        <!-- Profile update section -->
+        <div id="update-profile" class="update-profile">
+           
+        </div>
+
+        <!-- Create section button container -->
+        <div id="board-create-section" class="create-section" style="display: none;">
+            <div>
+                <a href="{% url 'create_section' %}" class="btn"><span><h1>Click to create<h1></span></a>
+            </div>
+        </div>
+
+        <!-- Timeline setting form container -->
+        <div id="board-set-timeline" class="set-timeline" style="display: none;">
+            <div class="timer-container">
+                <!-- Timeline header with image -->
+                <div class="header">
+                    <img src="{% static 'img/timeline.png' %}" alt="">
+                </div>
+                <!-- Timeline setting form -->
+                <form method="POST" id="set-timeline-form" action="{% url 'set_timeline' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="teacher" value="{{ request.user.id }}">
+                    <div class="form-group">
+                        <label for="section">Select Section:</label>
+                        <select name="section" id="section" required>
+                            {% for section in sections %}
+                                <option value="{{ section.id }}">{{ section.section_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duration (in minutes):</label>
+                        <input type="number" name="duration" id="duration" required min="1">
+                    </div>
+                    <div class="btn">
+                        <button class="btn-start" type="submit" id="start-timer">Start Timer</button>
+                    </div>
+                </form>
+                <!-- Timer display container -->
+                <div class="display-time" id="display">00:00:00</div>
+                <p id="timer-status"></p>
+            </div>
+        </div>
+
+        <!-- Section management container -->
+        <div id="board-set-manage-section" class="set-manage-section" style="display: none;">
+            <!-- Section management header -->
+            <div class="header">
+                <img src="{% static 'App/img/manage-section.png ' %}">
+                <h2>Manage Sections</h2>
+            </div>
+            <!-- List of sections -->
+            <div class="sections">
+                {% for section in sections %}
+                <div class="section" data-section-id="{{ section.id }}">
+                    <p class="section-name" 
+                       data-section-id="{{ section.id }}"
+                       data-capacity="{{ section.student_capacity }}"
+                       title="Click to view attendance">
+                        {{ section.section_name }}
+                    </p>
+                    <!-- Section management buttons -->
+                    <div class="options">
+                        <button class="delete-section" data-section-id="{{ section.id }}">Delete</button>
+                        <button class="update-section" 
+                                data-section-id="{{ section.id }}"
+                                data-capacity="{{ section.student_capacity }}">Update</button>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No sections found. Create a new section to get started.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Loading spinner overlay -->
+<div id="loading-spinner" class="loading-spinner" style="display: none;">
+    <div class="spinner"></div>
+</div>
+
+{% block javascript %}
+<script src="{% static 'App/JS/teacher_dashboard.js' %}"></script>
+{% endblock%}
+
+{% endblock %}

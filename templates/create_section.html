@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Create Section{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'App/css/create_section.css' %}">
+{% endblock %}
+{% block content %}
+<!-- Main container for centering content -->
+<div class="container">
+    <!-- Section creation form container -->
+    <div id="board-create-section" class="create-section">
+        <!-- Header with ICCT logo -->
+        <div class="header">
+            <img src="{% static 'App/img/icct logop.png' %}" >
+        </div>
+        <!-- Form for creating new section -->
+        <form method="POST" id="create-section-form">
+            {% csrf_token %}
+            <!-- Section name input container -->
+            <div class="input-tab">
+                <input id="section-name" type="text" name="section_name" placeholder="Section name" required>
+                <!-- Error message container for section name -->
+                <div id="section-name-error" class="error-tab"></div>
+            </div>
+            <!-- Student capacity input container -->
+            <div class="input-tab">
+                <input id="student-count" type="number" name="student_count" placeholder="Student count" required>
+                <!-- Error message container for student count -->
+                <div id="student-count-error" class="error-tab"></div>
+            </div>
+            <!-- Form submission button container -->
+            <div class="btn-form">
+                <button id="create-btn" type="submit">Create</button>
+                <!-- Error message container for form submission -->
+                <div id="submit-error" class="error-tab"></div>
+            </div>
+        </form>
+    </div>
+   </div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'App/JS/create_section.js' %}"></script>
+{% endblock %}

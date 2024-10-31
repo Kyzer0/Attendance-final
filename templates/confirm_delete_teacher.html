@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Header for delete confirmation page -->
+<h2>Confirm Delete</h2>
+
+<!-- Confirmation message showing teacher's email -->
+<p>Are you sure you want to delete the teacher {{ teacher.email }}?</p>
+
+<!-- Form for submitting delete confirmation -->
+<form method="post">
+    {% csrf_token %}
+    <!-- Delete confirmation button -->
+    <button type="submit">Confirm Delete</button>
+    <!-- Cancel button that returns to teacher management page -->
+    <a href="{% url 'manage_teachers' %}">Cancel</a>
+</form>
+{% endblock %}

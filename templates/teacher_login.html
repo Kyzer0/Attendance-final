@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Teacher Login{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'App/css/teacher_login.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container"> <!-- Main container that holds all content and provides overall layout -->
+    <div class="wrap-up"> <!-- Wrapper div that contains and organizes the login form content -->
+
+        <a href="{% url 'student_submission' %}" class="back-icon">
+            <img src="{% static 'App/img/back-logo.png' %}" alt="Back">
+        </a>
+        
+        <div class="header"> <!-- Header section containing the logo -->
+            <div class="logo"> <!-- Container for the ICCT logo image -->
+                <img src="{% static 'App/img/icct logop.png' %}" alt="Logo">
+            </div>
+        </div>
+
+        <form id="teacherLoginForm" method="post">
+            {% csrf_token %}
+            
+            <div class="input-tab"> <!-- Container for teacher ID input field and its error message -->
+                <input type="text" name="teacher_id" id="id_teacher_id" placeholder="Teacher ID">
+                <div class="error-tab" id="teacher_id_error"></div> <!-- Error message display for teacher ID validation -->
+            </div>
+
+            <div class="input-tab"> <!-- Container for email input field and its error message -->
+                <input type="email" name="email" id="email" placeholder="Email">
+                <div class="error-tab" id="email-error"></div> <!-- Error message display for email validation -->
+            </div>
+
+            <div class="input-tab"> <!-- Container for password input field, lock icon and its error message -->
+                <input type="password" name="password" id="password" placeholder="Password">
+                <i class='bx bxs-lock' id="lock-password"></i> <!-- Lock icon for password field -->
+                <div class="error-tab" id="password-error"></div> <!-- Error message display for password validation -->
+            </div>
+
+            <div class="btn-form"> <!-- Container for the login button and its error message -->
+                <input type="submit" value="Login" id="submit-btn">
+                <div class="error-tab" id="submit-error"></div> <!-- Error message display for form submission errors -->
+            </div>
+
+            
+        </form>
+    </div>
+              
+    <footer>&copy; 2024 ICCT Registration. All Rights Reserved.</footer> <!-- Footer section with copyright information -->
+</div>
+
+{% endblock %}

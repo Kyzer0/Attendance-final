@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'App/CSS/teacher_profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Main container for the entire profile page -->
+<div class="container">
+    <!-- Secondary container for layout purposes -->
+    <div class="second-container">
+        <!-- Container for the profile management section -->
+        <div class="profile-container">
+            <h2 class="profile-title">Manage Profile</h2>
+        
+            <!-- Profile Picture Upload Section -->
+            <div class="profile-pic-section">
+                <img id="profile-pic" src="{% static 'default-profile.jpg' %}" alt="Profile Picture" class="placeholder-pic">
+                <input type="file" id="profile-pic-input" accept="image/*" onchange="loadProfilePic(event)">
+            </div>
+        
+            <form method="POST" id="manage-profile-form" class="profile-form">
+                {% csrf_token %}
+                <!-- Input group for first name field -->
+                <div class="input-group">
+                    <label for="first-name">First Name</label>
+                    <input id="first-name" type="text" name="first_name" placeholder="First Name" value="{{ request.user.first_name }}">
+                    <!-- Error message container for first name -->
+                    <div id="first-name-error" class="error-tab"></div>
+                </div>
+                <!-- Input group for last name field -->
+                <div class="input-group">
+                    <label for="last-name">Last Name</label>
+                    <input id="last-name" type="text" name="last_name" placeholder="Last Name" value="{{ request.user.last_name }}">
+                    <!-- Error message container for last name -->
+                    <div id="last-name-error" class="error-tab"></div>
+                </div>
+                <!-- Container for the update profile button -->
+                <div class="button-group">
+                    <button id="update-profile-btn" type="submit">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
