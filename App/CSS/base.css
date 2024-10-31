@@ -1,0 +1,162 @@
+/* Import Poppins font from Google Fonts with various weights */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+/* Reset default styles and set font family */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Set full height and remove default margins for html and body */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Create a sticky footer layout using flexbox */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Allow content to grow and push footer down */
+body > *:not(footer) {
+    flex: 1;
+}
+
+/* Basic footer styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* Reset default styles and set consistent font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Set default background and text styles for body */
+body {
+    background: #4070f4;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Main container for content with responsive padding */
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header section styling with brand colors */
+header {
+    background: #4070f4;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Header title sizing */
+header h1 {
+    font-size: 24px;
+}
+
+/* Navigation menu container */
+nav {
+    margin: 20px 0;
+}
+
+/* Remove default list styling from navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Horizontal navigation items */
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+/* Navigation link styling */
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Main content area with card-like appearance */
+main {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer section styling */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #4070f4;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/* Responsive design for tablets and smaller screens */
+@media screen and (max-width: 625px) {
+    /* Reduce header size */
+    header h1 {
+        font-size: 20px;
+    }
+
+    /* Stack navigation items vertically */
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Style navigation links as buttons */
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        background: #0d6efd;
+        border-radius: 5px;
+    }
+}
+
+/* Responsive design for mobile phones */
+@media screen and (max-width: 500px) {
+    /* Reduce container padding */
+    .container {
+        padding: 10px;
+    }
+
+    /* Further reduce header size */
+    header h1 {
+        font-size: 18px;
+    }
+
+    /* Adjust main content padding */
+    main {
+        padding: 15px;
+    }
+}
+
+/* Responsive design for smaller mobile phones */
+@media screen and (max-width: 414px) {
+    /* Minimize header and footer padding */
+    header {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}

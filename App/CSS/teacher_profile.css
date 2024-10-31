@@ -1,0 +1,126 @@
+/* General styling - Main container for centering content vertically and horizontally */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Secondary container that holds the profile content with a white background and shadow */
+.second-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+/* Profile title styling - Centers the heading text */
+.profile-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Profile picture section - Centers the profile image and upload input vertically */
+.profile-pic-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Circular profile picture placeholder with blue border */
+.placeholder-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #007bff;
+    margin-bottom: 10px;
+}
+
+/* Profile picture file input styling */
+#profile-pic-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Form layout - Arranges form elements in a vertical column */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container for each form input and label pair */
+.input-group {
+    margin-bottom: 15px;
+}
+
+/* Label styling for form inputs */
+.input-group label {
+    font-weight: bold;
+    color: #34495e;
+}
+
+/* Form input field styling with transition effect on focus */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+/* Highlight effect when input is focused */
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Error message display styling */
+.error-tab {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Button container for spacing between update and delete buttons */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Common button styling for both update and delete buttons */
+.button-group button {
+    flex: 1;
+    margin: 5px;
+    padding: 12px;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+/* Update profile button styling - Blue theme */
+#update-profile-btn {
+    background-color: #007bff;
+}
+
+/* Darker blue on hover for update button */
+#update-profile-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Delete button styling - Red theme */
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+/* Darker red on hover for delete button */
+.delete-btn:hover {
+    background-color: #c0392b;
+}

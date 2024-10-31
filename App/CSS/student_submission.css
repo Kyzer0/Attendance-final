@@ -1,0 +1,376 @@
+/* Universal styles: Resets padding, margin, sets border-box for consistent sizing, and applies Poppins font */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Removes underline and preserves original color for all anchor tags */
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+/* Main container: Centered content with full screen height and a background color */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #4070f4;
+    position: relative;
+}
+
+/* Wrap-up box: Contains the form and other content with padding and rounded corners */
+.container .wrap-up {
+    max-width: 550px;
+    width: 100%;
+    background: white;
+    padding: 28px;
+    border-radius: 8px;
+}
+
+/* Header section: Positioned content with centered alignment */
+.container .wrap-up .header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Logo inside the header: Sets width for the logo image */
+.container .wrap-up .header .logo img {
+    width: 140px;
+}
+
+/* Teacher user icon: Adds smooth transition effect on hover */
+.container .wrap-up .header .teacher-users img {
+    width: 55px;
+    transition: ease 1s;
+}
+
+/* Authentication section: Positions authentication elements to the right of header */
+.container .wrap-up .header .authentication {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: -5px;
+}
+
+/* Authentication image: Sets consistent size for authentication icons */
+.container .wrap-up .header .authentication img {
+    width: 55px;
+}
+
+/* Title container: Centers the main title text horizontally and vertically */
+.container .wrap-up .title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form layout: Organizes form elements in a vertical column with center alignment */
+.container .wrap-up form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Input fields: Sets consistent width and height for all input containers */
+.container .wrap-up form .input-tab {
+    width: 90%;
+    height: 55px;
+    margin-top: 25px;
+}
+
+/* Input field design: Styles individual input elements with rounded corners and borders */
+.container .wrap-up form .input-tab input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0 15px;
+    border: 1px solid #d1d1d1;
+}
+
+/* Input focus effect: Changes border color when input is focused */
+.container .wrap-up form .input-tab input:focus {
+    border-color: #0d6efd;
+}
+
+/* Submit button container: Sets dimensions and spacing for the submit button area */
+.container .wrap-up form .btn-form {
+    width: 400px;
+    height: 55px;
+    margin-top: 45px;
+    margin-bottom: 5px;
+}
+
+/* Submit button appearance: Styles the actual button with color and hover effects */
+.container .wrap-up form .btn-form button {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background: #4070f4;
+    font-weight: 600;
+    color: white;
+    font-size: 17px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* Submit button hover effect: Changes background and adds slight scale animation */
+.container .wrap-up form .btn-form button:hover {
+    background: #0056b3;
+    transform: scale(1.02);
+}
+
+/* Error message container: Styles error messages for both inputs and buttons */
+.container .wrap-up form .input-tab .error-tab,
+.container .wrap-up form .btn-form .error-tab {
+    display: flex;
+    align-items: center;
+    color: #d93025;
+    gap: 5px;
+}
+
+/* Valid message styling: Styles success/valid messages in green */
+.container .wrap-up form .input-tab .error-tab .valid {
+    display: flex;
+    align-items: center;
+    color: green;
+    gap: 5px;
+}
+
+/* Error text size for inputs: Sets font size for error messages in input fields */
+.container .wrap-up form .input-tab .error-tab p {
+    font-size: 13px;
+}
+
+/* Error text size for buttons: Sets font size and alignment for button error messages */
+.container .wrap-up form .btn-form .error-tab p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
+/* Popup styling: Creates a hidden popup with scaling animation effect */
+.container .wrap-up .pop-up {
+    width: 300px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, .3);
+    color: #28a745;
+    font-weight: 500;
+}
+
+/* Show popup animation: Controls visibility and transform when popup is shown */
+.container .wrap-up .show {
+    top: 50%;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Popup title styling: Sets font properties for popup headers */
+.container .wrap-up .pop-up h2 {
+    font-weight: 500;
+    margin: 30px 0 10px;
+    font-size: 38px;
+}
+
+/* Popup button design: Styles buttons within popups */
+.container .wrap-up .pop-up button {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #4070f4;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer styling: Positions footer at bottom of container */
+.container footer {
+    position: absolute;
+    color: #fff;
+    top: 1000px;
+}
+
+/* Modal styles: Creates a full-screen overlay for modal dialogs */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal content container: Styles the modal dialog box */
+.modal-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal title styling: Sets font properties for modal headers */
+.modal-content h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+/* Error message styling: Styles error messages within modals */
+.modal-content h1 {
+    color: #dc3545;
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+/* Generic message container: Hidden by default */
+#modal-message {
+    display: none;
+}
+
+/* Modal OK button: Styles the confirmation button in modals */
+#modal-ok-btn {
+    background-color: #4070f4;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+/* Modal OK button hover effect: Changes background color on hover */
+#modal-ok-btn:hover {
+    background-color: #3060e0;
+}
+
+/* Close button: Styles the X button to close modals */
+.close-button {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* Close button hover effect: Darkens color on hover */
+.close-button:hover {
+    color: #333;
+}
+
+/* Media queries for screens up to 625px */
+@media screen and (max-width: 625px) {
+    .container .wrap-up {
+        max-width: 450px;
+    }
+    .container .wrap-up .title h1 {
+        font-size: 30px;
+    }
+
+    .container footer {
+        display: none;
+    }
+}
+
+/* Media queries for screens up to 500px */
+@media screen and (max-width: 500px) {
+    .container .wrap-up {
+        max-width: 400px;
+    }
+    .container .wrap-up .header .logo img {
+        width: 100px;
+    }
+    .container .wrap-up .title h1 {
+        font-size: 30px;
+    }
+    .container .wrap-up form .input-tab,
+    .container .wrap-up form .btn-form {
+        width: 340px;
+    }
+
+    .container footer {
+        display: none;
+    }
+}
+
+/* Media queries for screens up to 414px */
+@media screen and (max-width: 414px) {
+    .container .wrap-up {
+        max-width: 350px;
+    }
+    .container .wrap-up form .input-tab,
+    .container .wrap-up form .btn-form {
+        width: 300px;
+    }
+    .container .wrap-up .header .authentication img {
+        width: 45px;
+    }
+    .container footer {
+        display: none;
+    }
+}
+
+/* Media queries for screens up to 350px */
+@media screen and (max-width: 350px) {
+    .container .wrap-up {
+        max-width: 300px;
+    }
+    .container .wrap-up form .input-tab,
+    .container .wrap-up form .btn-form {
+        width: 270px;
+    }
+    .container .wrap-up .title h1 {
+        font-size: 20px;
+    }
+    .container .wrap-up .header .logo img {
+        width: 80px;
+    }
+    .container .wrap-up .header .authentication img {
+        width: 35px;
+    }
+    .container footer {
+        display: none;
+    }
+}

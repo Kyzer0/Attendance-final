@@ -1,0 +1,221 @@
+
+/* Import Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Global styles - Reset default browser styles and set font family */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Container styles - Creates a full height centered flex container with blue background */
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4070f4;
+}
+
+/* Main content wrapper - Contains the login form with white background and rounded corners */
+.container .wrap-up {
+    max-width: 550px;
+    width: 100%;
+    background: white;
+    padding: 28px;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Back button icon positioning in top right corner */
+.container .wrap-up .back-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+/* Back button image sizing */
+.container .wrap-up .back-icon img {
+    width: 40px;
+}
+
+/* Header section containing logo - Centered horizontally */
+.container .wrap-up .header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Logo image sizing */
+.container .wrap-up .header .logo img {
+    width: 140px;
+}
+
+/* Form layout - Centered column of inputs */
+.container .wrap-up form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Input container sizing and spacing */
+.container .wrap-up form .input-tab {
+    width: 400px;
+    height: 55px;
+    margin-top: 25px;
+}
+
+/* Input field styling - Clean modern look with subtle border */
+.container .wrap-up form .input-tab input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0 15px;
+    border: 1px solid #d1d1d1;
+}
+
+/* Password field container - Allows positioning of eye icon */
+.container .wrap-up form .input-tab:nth-child(2) {
+    position: relative;
+}
+
+/* Password visibility toggle icon positioning */
+.container .wrap-up form .input-tab:nth-child(2) i {
+    position: absolute;
+    right: 14px;
+    top: 13px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Input focus state - Highlights border in blue */
+.container .wrap-up form .input-tab input:focus {
+    border-color: #0d6efd;
+}
+
+/* Submit button container sizing and spacing */
+.container .wrap-up form .btn-form {
+    width: 400px;
+    height: 55px;
+    margin-top: 45px;
+    margin-bottom: 5px;
+}
+
+/* Submit button styling - Blue background with white text */
+.container .wrap-up form .btn-form input {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: #4070f4;
+    font-weight: 400;
+    color: white;
+    font-size: 17px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+/* Error message styling - Red text with icon */
+.container .wrap-up form .input-tab .error-tab,
+.container .wrap-up form .btn-form .error-tab {
+    display: flex;
+    align-items: center;
+    color: #d93025;
+    gap: 5px;
+    font-size: 13px;
+}
+
+/* Valid input message styling - Green text with icon */
+.container .wrap-up form .input-tab .error-tab .valid {
+    display: flex;
+    align-items: center;
+    color: green;
+    gap: 5px;
+    font-size: 13px;
+}
+
+/* Footer positioning - Absolute position at bottom */
+.container footer {
+    position: absolute;
+    color: #fff;
+    top: 1000px;
+}
+
+/* Media queries for responsive design */
+
+/* For screens smaller than 625px - Reduce overall width */
+@media screen and (max-width: 625px) {
+    .container .wrap-up {
+        max-width: 450px;
+    }
+    
+    /* Hide footer on small screens */
+    .container footer {
+        display: none;
+    }
+}
+
+/* For screens smaller than 500px - Further reduce widths and logo size */
+@media screen and (max-width: 500px) {
+    .container .wrap-up {
+        max-width: 400px;
+    }
+
+    .container .wrap-up .header .logo img {
+        width: 100px;
+    }
+
+    .container .wrap-up form .input-tab,
+    .container .wrap-up form .btn-form {
+        width: 340px;
+    }
+
+    /* Hide footer on small screens */
+    .container footer {
+        display: none;
+    }
+}
+
+/* For screens smaller than 414px - Mobile optimization */
+@media screen and (max-width: 414px) {
+    .container .wrap-up {
+        max-width: 350px;
+    }
+
+    .container .wrap-up form .input-tab,
+    .container .wrap-up form .btn-form {
+        width: 300px;
+    }
+
+    /* Hide footer on small screens */
+    .container footer {
+        display: none;
+    }
+}
+
+/* For screens smaller than 350px - Small mobile optimization */
+@media screen and (max-width: 350px) {
+    .container .wrap-up {
+        max-width: 300px;
+    }
+
+    .container .wrap-up form .input-tab,
+    .container .wrap-up form .btn-form {
+        width: 270px;
+    }
+
+    .container .wrap-up .header .logo img {
+        width: 80px;
+    }
+
+    /* Hide footer on small screens */
+    .container footer {
+        display: none;
+    }
+}

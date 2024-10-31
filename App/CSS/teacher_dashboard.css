@@ -1,0 +1,723 @@
+/* Import Poppins font from Google Fonts with various weights */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Reset default styles and set font family */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Remove default link styling */
+a{
+    color: unset;
+    text-decoration: none;
+}
+
+/* Main container for the dashboard layout */
+.container{
+    height: 100vh;
+    width: 100%;
+    background: #4070f4;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Sidebar navigation styling */
+.container .side-bar{
+    background: white;
+    width: 300px;
+    height: 100vh;
+    box-shadow: 0px 0px 20px rgba(0,0,0,.5);
+    position: sticky    ;
+    top: 0;
+    left: 0;
+    transition: left 0.5s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+    
+}
+
+/* Class to hide sidebar */
+.container .hide{
+    left: -300px;
+}
+
+/* Logo container in sidebar */
+.container .side-bar .logo{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo image sizing */
+.container .side-bar .logo img{
+    width: 140px;
+}
+
+/* Back icon button styling */
+.container .side-bar .back-icon{
+    position: absolute;
+    top: 25px;
+    right: -40px;
+    background: #4070f4;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 8px rgba(0,0,0,.5);
+    cursor: pointer;
+    z-index: 999;
+}
+
+/* Back icon size and color */
+.container .side-bar .back-icon i{
+    font-size: 40px;
+    color: white;
+}
+
+/* Navigation links container */
+.container .side-bar .links{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    gap: 25px;
+    flex-grow: 1;
+}
+
+/* Navigation link icons */
+.container .side-bar .links li a img{
+    width: 40px;
+}
+
+/* Navigation link styling */
+.container .side-bar .links li a{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+    padding: 8px 15px;
+    transition: .3s ease;
+}
+
+/* Hover effect for navigation links */
+.container .side-bar .links li a:hover{
+    background: #4070f4;
+    color: white;
+}
+
+/* Focus state for navigation links */
+.container .side-bar .links li a:focus{
+    background: #4070f4;
+    color: white;
+
+}
+
+/* Navigation link text styling */
+.container .side-bar .links li a p{
+    font-size: 18px;
+    font-weight: 450;
+}
+
+/* Logout button container */
+.container .side-bar .logout{
+    margin-bottom: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Logout button icon */
+.container .side-bar .logout img{
+    width: 60px;
+}   
+
+/* Main content area */
+.container .boards{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+/* Dashboard board container */
+.container .boards .board-dashboard{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+/* Table container styling */
+.container .boards .board-dashboard .table-container {
+    padding: 0 10%;
+    margin: 40px auto 0;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    width: 100%;
+    height: 100vh;
+}
+
+/* Dashboard heading */
+.container .boards .board-dashboard .table-container .heading {
+    font-size: 40px;
+    text-align: center;
+    color: #f1f1f1;
+    margin-bottom: 40px;
+}
+
+/* Table styling */
+.container .boards .board-dashboard .table-container .table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table header styling */
+.container .boards .board-dashboard .table-container .table thead {
+    background: white;
+}
+
+/* Table header cell styling */
+.container .boards .board-dashboard .table-container .table thead tr th{
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.35px;
+    color: black;
+    padding: 12px;
+    border: 1px solid #dee2e685;
+    vertical-align: top;
+}
+
+/* Table body cell styling */
+.container .boards .board-dashboard .table-container .table tbody tr td {
+    font-size: 18px;
+    letter-spacing: 0.35px;
+    font-weight: normal;
+    color: #f1f1f1;
+    text-align: center;
+    border: 1px solid #dee2e685;
+    padding: 10px;
+}
+
+/* Timeline section container */
+.container .boards .set-timeline{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+/* Timer setup container */
+.container .boards .set-timeline .timer-container{
+    background: #fff;
+    width: 650px;
+    text-align: center;
+    padding: 40px;
+    box-shadow: 0px 0px 8px rgba(0,0,0,.5);
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Timer header styling */
+.container .boards .set-timeline .timer-container .header{
+    margin-bottom: 40px;
+}
+
+/* Timer logo image */
+.container .boards .set-timeline .timer-container .header img{
+    width: 100px;
+}
+
+/* Timer input container */
+.container .boards .set-timeline .timer-container  .timer-setup{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Timer input field styling */
+.container .boards .set-timeline .timer-container .timer-setup input{
+    width: 150px;
+    height: 55px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    color: black;
+}
+
+/* Timer button container */
+.container .boards .set-timeline .timer-container .btn{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Timer control buttons */
+.container .boards .set-timeline .timer-container .btn button{
+    width: 150px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #4070f4;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Timer display */
+.container .boards .set-timeline .timer-container  .display-time{
+    font-size: 30px;
+}
+
+/* Section creation form container */
+.container .boards .create-section{
+    max-width: 550px;
+    width: 100%;
+    background: white;
+    padding: 28px;
+    border-radius: 8px;
+}
+
+/* Section creation header */
+.container .boards .create-section .header{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Section creation logo */
+.container .boards .create-section .header img{
+    width: 100px;
+}
+
+/* Section creation form */
+.container .boards .create-section form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Input container for section creation */
+.container .boards .create-section form .input-tab{
+    width: 400px;
+    height: 55px;
+    margin-top: 25px;
+}
+
+/* Input field styling */
+.container .boards .create-section form .input-tab input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0 15px;
+    border: 1px solid #d1d1d1;
+}
+
+/* Input focus state */
+.container .boards .create-section form .input-tab input:focus{
+    border-color: #0d6efd;
+}
+
+/* Form button container */
+.container .boards .create-section form .btn-form{
+    width: 400px;
+    height: 55px;
+    margin-top: 45px;
+    margin-bottom: 5px;
+}
+
+/* Form submit button */
+.container .boards .create-section form .btn-form button{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: #4070f4;
+    font-weight: 400;
+    color: white;
+    font-size: 17px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+/* Error message styling */
+.container .boards .create-section form .input-tab .error-tab,
+.container .boards .create-section form .btn-form .error-tab {
+    display: flex;
+    align-items: center;
+    color: #d93025;
+    gap: 5px;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Valid message styling */
+.container .boards .create-section form .input-tab .error-tab .valid {
+    display: flex;
+    align-items: center;
+    color: green;
+    gap: 5px;
+    font-size: 13px;
+}
+
+/* Section management container */
+.container .boards .set-manage-section{
+    max-width: 850px;
+    width: 100%;
+    background: white;
+    padding: 28px;
+    border-radius: 8px;
+}
+
+/* Section management header */
+.container .boards .set-manage-section .header{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Section management logo */
+.container .boards .set-manage-section .header img{
+    width: 100px;
+}
+
+/* Sections list container */
+.container .boards .set-manage-section .sections{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Individual section item */
+.container .boards .set-manage-section .sections .section{
+    width: 700px;
+    height: 85px;
+    margin: 25px 0px 0px 0px;
+    box-shadow: 0px 0px 8px rgba(0,0,0,.5);
+    background: #0d6efd;
+    border-radius: 5px;
+    color: #fff;
+    display: flex;
+    padding: 0 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Section title */
+.container .boards .set-manage-section .sections .section p{
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Section options container */
+.container .boards .set-manage-section .sections .section .options{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Section option icons */
+.container .boards .set-manage-section .sections .section .options img{
+    width: 50px;
+    cursor: pointer;
+}
+
+/* Hide certain sections by default */
+.container .boards .set-timeline,
+.container .boards .set-manage-section,
+.container .boards .create-section{
+    display: none;
+}
+
+/* Show dashboard by default */
+.container .boards .board-dashboard{
+    display: block;
+    
+}
+
+/* Responsive design for screens up to 860px */
+@media screen and (max-width: 860px) {
+    .container .boards .board-dashboard .table-container .table thead tr th{
+        font-size: 17px;
+    }
+    
+    .container .boards .board-dashboard .table-container .table tbody tr td {
+        font-size: 14px;
+    }
+}
+
+/* Responsive design for screens up to 768px */
+@media screen and (max-width: 768px) {
+    .container .side-bar{  
+        width: 240px;
+    }
+
+    .container .side-bar .logo img{
+        width: 130px;
+    }
+
+    .container .side-bar .links li a img{
+        width: 40px;
+    }
+    
+    .container .side-bar .links li a p{
+        font-size: 16px;
+    }
+
+    .container .hide{
+        left: -240px;
+    }
+
+    .container .side-bar .logout{
+        margin-bottom: 80px;
+    }
+    
+    .container .side-bar .logout img{
+        width: 50px;
+    }   
+
+    .container .boards .set-timeline .timer-container{
+        width: 450px;
+        padding: 15px;
+    }
+
+    .container .boards .set-timeline .timer-container .timer-setup input{
+        width: 100px;
+        height: 55px;
+        padding: 5px;
+        font-size: 13px      
+    }
+
+    .container .boards .create-section{
+        max-width: 450px;
+    }
+
+    .container .boards .create-section form .input-tab,
+    .container .boards .create-section form .btn-form{
+        width: 350px;
+    }
+    
+    .container .boards .set-manage-section{
+        max-width: 450px;
+    }
+
+    .container .boards .set-manage-section .sections .section{
+        width: 350px;
+        height: 55px;
+    }
+
+    .container .boards .set-manage-section .sections .section p{
+        font-size: 14px;
+    }
+    
+    .container .boards .set-manage-section .sections .section .options img{
+        width: 25px;
+    }
+
+    .container .boards .board-dashboard .table-container .heading{
+        font-size: 25px;
+    }
+
+    .container .boards .board-dashboard .table-container .table thead{
+        display: none;
+    }
+
+    .table, .table tbody, .table tr, .table td{
+        display: block;
+        width: 100%;
+    }
+
+    .table tr{
+        margin-bottom: 15px;
+    }
+
+    .container .boards .board-dashboard .table-container .table tbody tr td{
+        text-align: right;
+        padding-left: 50%;
+    }
+
+    .container .boards .board-dashboard .table-container .table td:before{
+        content: attr(data-label);
+        position: absolute;
+        left: 65px;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: 600;
+        font-size: 15px;
+        text-align: left;
+    }
+}
+
+/* Responsive design for screens up to 500px */
+@media screen and (max-width: 500px) {
+    .container .side-bar{  
+        width: 200px;
+    }
+
+    .container .side-bar .logo img{
+        width: 100px;
+    }
+
+    .container .side-bar .links li a img{
+        width: 30px;
+    }
+    
+    .container .side-bar .links li a p{
+        font-size: 13px;
+    }
+
+    .container .hide{
+        left: -200px;
+    }
+
+    .container .side-bar .logout{
+        margin-bottom: 80px;
+    }
+    
+    .container .side-bar .logout img{
+        width: 30px;
+    }   
+
+    .container .boards .set-timeline .timer-container{
+        width: 300px;
+        padding: 20px;
+    }
+
+    .container .boards .set-timeline .timer-container .timer-setup input{
+        width: 200px;
+        height: 55px;
+        padding: 5px;
+        font-size: 11px;
+        margin-top: 30px;
+    }
+
+    .container .boards .set-timeline .timer-container .btn button{
+        width: 100px;
+        height: 50px;
+        font-size: 13px;
+    }
+
+    .container .boards .create-section{
+        max-width: 300px;
+    }
+
+    .container .boards .create-section form .input-tab,
+    .container .boards .create-section form .btn-form{
+        width: 250px;
+    }
+    
+    .container .boards .set-manage-section{
+        max-width: 300px;
+    }
+
+    .container .boards .set-manage-section .sections .section{
+        width: 250px;
+        height: 55px;
+    }
+
+    .container .boards .set-manage-section .sections .section p{
+        font-size: 13px;
+    }
+
+    .container .boards .board-dashboard .table-container{
+        width: 100vw;
+    }
+
+    .container .boards .board-dashboard .table-container .table thead{
+        display: none;
+    }
+
+    .table, .table tbody, .table tr, .table td{
+        display: block;
+        width: 100%;
+    }
+
+    .table tr{
+        margin-bottom: 10px;
+    }
+
+    .container .boards .board-dashboard .table-container .table tbody tr td{
+        text-align: right;
+        padding-left: 50%;
+        font-size: 11px;
+    }
+
+    .container .boards .board-dashboard .table-container .table td:before{  
+        left: 45px;
+        font-size: 14px;
+    }
+}
+
+/* Responsive design for screens up to 400px */
+@media screen and (max-width: 400px) {
+    .container .boards .board-dashboard .table-container .table td:before{
+        left: 35px;  
+        font-size: 11px;
+    }     
+
+    .container .boards .board-dashboard .table-container .table tbody tr td{
+        font-size: 10px;
+    }
+}
+    
+/* Arrow image styling */
+#arrow-img{
+    width: 1px;
+    height: 1px;
+}
+
+/* Loading spinner overlay */
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it's above everything else */
+}
+
+/* Spinner animation */
+.spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #4070f4; /* Change to your primary color */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin .5s linear infinite;
+}
+
+/* Spinner rotation animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
